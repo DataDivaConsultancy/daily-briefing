@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing Diario — 19 de abril de 2026</title>
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --accent: #0071e3;
+    --red: #ff3b30;
+    --orange: #ff9500;
+    --green: #34c759;
+    --blue: #007aff;
+    --border: #e5e5ea;
+    --shadow: 0 1px 3px rgba(0,0,0,.08);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
+  .container { max-width:900px; margin:0 auto; padding:24px 16px; }
+  header { text-align:center; padding:32px 0 24px; }
+  header h1 { font-size:28px; font-weight:700; letter-spacing:-.5px; }
+  header p { color:var(--muted); font-size:14px; margin-top:4px; }
+  .card { background:var(--card); border-radius:12px; box-shadow:var(--shadow); padding:20px 24px; margin-bottom:16px; }
+  .card h2 { font-size:18px; font-weight:600; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+  .section-icon { width:24px; height:24px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:14px; color:#fff; flex-shrink:0; }
+  .alert-banner { background:linear-gradient(135deg,#ff3b30,#ff6961); color:#fff; border-radius:12px; padding:16px 24px; margin-bottom:16px; }
+  .alert-banner h3 { font-size:16px; font-weight:700; margin-bottom:4px; }
+  .alert-banner p { font-size:14px; opacity:.95; }
+  .priority-high { border-left:4px solid var(--red); }
+  .priority-medium { border-left:4px solid var(--orange); }
+  .priority-low { border-left:4px solid var(--green); }
+  .badge { display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:10px; text-transform:uppercase; }
+  .badge-alta { background:#ffebee; color:#c62828; }
+  .badge-media { background:#fff3e0; color:#e65100; }
+  .badge-baja { background:#e8f5e9; color:#2e7d32; }
+  .email-item { padding:12px 0; border-bottom:1px solid var(--border); }
+  .email-item:last-child { border-bottom:none; }
+  .email-sender { font-weight:600; font-size:14px; }
+  .email-subject { font-size:14px; color:var(--text); margin:2px 0; }
+  .email-meta { font-size:12px; color:var(--muted); }
+  .email-summary { font-size:13px; color:#444; margin-top:4px; }
+  .email-action { font-size:12px; color:var(--accent); font-weight:500; margin-top:4px; }
+  .news-item { padding:10px 0; border-bottom:1px solid var(--border); }
+  .news-item:last-child { border-bottom:none; }
+  .news-section { font-size:11px; font-weight:600; text-transform:uppercase; color:var(--accent); margin-bottom:2px; }
+  .news-headline { font-weight:600; font-size:14px; }
+  .news-summary { font-size:13px; color:#444; margin-top:2px; }
+  .weather-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; text-align:center; }
+  .weather-stat { padding:12px; background:var(--bg); border-radius:8px; }
+  .weather-stat .value { font-size:24px; font-weight:700; }
+  .weather-stat .label { font-size:12px; color:var(--muted); }
+  .task-list { list-style:none; }
+  .task-list li { padding:8px 0; border-bottom:1px solid var(--border); font-size:14px; display:flex; align-items:flex-start; gap:8px; }
+  .task-list li:last-child { border-bottom:none; }
+  .task-num { background:var(--accent); color:#fff; width:22px; height:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; flex-shrink:0; }
+  .summary-list { list-style:none; }
+  .summary-list li { padding:6px 0; font-size:14px; border-bottom:1px solid var(--border); }
+  .summary-list li:last-child { border-bottom:none; }
+  .unavailable { background:#fafafa; border-radius:8px; padding:12px 16px; margin-top:8px; }
+  .unavailable p { font-size:13px; color:var(--muted); }
+  .agenda-note { background:var(--bg); border-radius:8px; padding:12px 16px; font-size:13px; color:var(--muted); }
+  footer { text-align:center; padding:24px 0; color:var(--muted); font-size:12px; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  @media(max-width:600px){
+    .container{padding:12px 8px;}
+    .card{padding:16px;}
+    header h1{font-size:22px;}
+    .weather-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Briefing Diario</h1>
+  <p>Domingo, 19 de abril de 2026 &middot; Generado a las 10:13 CEST</p>
+</header>
+
+<!-- ALERTA -->
+<div class="alert-banner">
+  <h3>ALERTA: Corte de corriente detectado</h3>
+  <p>Verisure ha detectado un corte de corriente en tu sistema de alarma (07:30h). Verifica el cuadro eléctrico y restablece la corriente lo antes posible.</p>
+</div>
+
+<!-- RESUMEN EJECUTIVO -->
+<div class="card">
+  <h2><span class="section-icon" style="background:var(--accent)">R</span> Resumen ejecutivo</h2>
+  <ul class="summary-list">
+    <li><strong>Alerta Verisure:</strong> Corte de corriente detectado en el sistema de alarma. Acción inmediata requerida.</li>
+    <li><strong>Mercados:</strong> Irán re-cerró el Estrecho de Ormuz en &lt;24h. Volatilidad esperada el lunes. Trump advierte a Teherán.</li>
+    <li><strong>Domingo:</strong> Sin reuniones detectadas (calendarios no conectados).</li>
+    <li><strong>FMI:</strong> Previsión de crecimiento mundial reducida al 3,1% para 2026.</li>
+    <li><strong>Argentina:</strong> Ajuste jubilaciones +2,9%. Tecnología argentina en Artemis II.</li>
+    <li><strong>Venezuela:</strong> EE.UU. levantó sanciones al Banco Central.</li>
+    <li><strong>Sant Jordi (23/04):</strong> Semana cultural en Barcelona a la vista.</li>
+    <li><strong>Gmail:</strong> Sin correos personales/negocio urgentes. Solo newsletters.</li>
+    <li><strong>Outlook / Zoho / WhatsApp:</strong> No conectados.</li>
+  </ul>
+</div>
+
+<!-- CORREOS -->
+<div class="card">
+  <h2><span class="section-icon" style="background:#ff3b30">@</span> Correos prioritarios</h2>
+
+  <div class="email-item priority-high" style="padding-left:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="email-sender">Verisure</span>
+      <span class="badge badge-alta">Alta</span>
+    </div>
+    <div class="email-subject">Corte de corriente detectado</div>
+    <div class="email-meta">Gmail &middot; verisure@verisure.es &middot; 19/04 07:30 UTC</div>
+    <div class="email-summary">El sistema de alarma ha detectado una interrupción eléctrica. Se requiere restablecer la corriente lo antes posible.</div>
+    <div class="email-action">Acción: Verificar cuadro eléctrico inmediatamente</div>
+  </div>
+
+  <div class="email-item priority-medium" style="padding-left:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="email-sender">San Juan Asesores</span>
+      <span class="badge badge-media">Media</span>
+    </div>
+    <div class="email-subject">Últimas plazas — Masterclass gratuita</div>
+    <div class="email-meta">Gmail &middot; juanjose.hernandez@sanjuanasesores.com &middot; 19/04 05:02 UTC</div>
+    <div class="email-summary">Masterclass gratuita online el martes 21/04 a las 10h. Quedan pocos huecos.</div>
+    <div class="email-action">Acción: Decidir si asistir y reservar hoy</div>
+  </div>
+
+  <div class="email-item priority-medium" style="padding-left:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="email-sender">Financial Times</span>
+      <span class="badge badge-media">Media</span>
+    </div>
+    <div class="email-subject">World News: Indian weight-loss market becomes 'bloodbath'...</div>
+    <div class="email-meta">Gmail (hbroggi@eada.net) &middot; FT@news-alerts.ft.com &middot; 19/04 04:00 UTC</div>
+    <div class="email-summary">Titulares: Estrecho de Ormuz bajo control iraní. Mercado de Ozempic genérico en India. UK: tensiones laborismo.</div>
+    <div class="email-action">Acción: Leer más tarde</div>
+  </div>
+
+  <div class="email-item priority-medium" style="padding-left:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span class="email-sender">Options Trading Report</span>
+      <span class="badge badge-media">Media</span>
+    </div>
+    <div class="email-subject">The Strait Closed Again. Your Portfolio Has 48 Hours.</div>
+    <div class="email-meta">Gmail &middot; 19/04 00:33 UTC</div>
+    <div class="email-summary">Irán re-cerró Ormuz en &lt;24h. Análisis de impacto en portafolios de inversión.</div>
+    <div class="email-action">Acción: Leer si tienes exposición a energía</div>
+  </div>
+
+  <p style="font-size:13px;color:var(--muted);margin-top:12px;">+ 26 correos adicionales ignorados (newsletters, promociones y spam comercial)</p>
+</div>
+
+<!-- AGENDA -->
+<div class="card">
+  <h2><span class="section-icon" style="background:#34c759">A</span> Agenda consolidada</h2>
+  <div class="agenda-note">
+    <strong>Domingo 19 de abril</strong> — No se detectaron eventos programados.<br><br>
+    <strong>Nota:</strong> Google Calendar, Outlook Calendar y Zoho Calendar no están conectados. Es posible que existan eventos no visibles para este briefing.<br><br>
+    <strong>Propuesta de agenda ideal:</strong><br>
+    &bull; Mañana: Verificar alarma Verisure y estado eléctrico<br>
+    &bull; Media mañana: Revisar análisis FT y mercados (Ormuz)<br>
+    &bull; Tarde: Descanso / planificación de la semana<br>
+    &bull; Noche: Decidir asistencia a masterclass martes
+  </div>
+</div>
+
+<!-- NOTICIAS -->
+<div class="card">
+  <h2><span class="section-icon" style="background:#ff9500">N</span> Noticias principales</h2>
+
+  <div class="news-item">
+    <div class="news-section">Internacional</div>
+    <div class="news-headline">Irán re-cierra el Estrecho de Ormuz y reclama 'control estricto'</div>
+    <div class="news-summary">Cerrado nuevamente en &lt;24h tras abrirlo. Trump advierte a Teherán. Impacto en precios del petróleo y mercados. <a href="http://cnnespanol.cnn.com/2026/04/15/mundo/live-news/guerra-ee-uu-e-israel-iran-ataques-en-vivo-1-trax">CNN</a></div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-section">Internacional</div>
+    <div class="news-headline">Alto el fuego de 10 días entre Líbano e Israel</div>
+    <div class="news-summary">La ONU acogió con satisfacción el anuncio. Reducción parcial de tensiones en la región.</div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-section">Internacional</div>
+    <div class="news-headline">EE.UU. elimina sanciones al Banco Central de Venezuela</div>
+    <div class="news-summary">El Departamento del Tesoro confirmó la medida. <a href="https://www.eluniversal.com.co/mundo/2026/04/14/estados-unidos-elimina-sanciones-al-banco-central-de-venezuela/">El Universal</a></div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-section">Economía</div>
+    <div class="news-headline">FMI reduce previsión de crecimiento mundial a 3,1%</div>
+    <div class="news-summary">Latam crecerá solo 2,1%. Desaceleración frente al 3,4% del bienio previo.</div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-section">Economía</div>
+    <div class="news-headline">Wall Street cerca de máximos, pero volatilidad por Ormuz</div>
+    <div class="news-summary">S&P 500 subió tras reapertura temporal, pero el re-cierre genera incertidumbre para el lunes. <a href="https://www.jornada.com.mx/2026/04/18/economia/013n1eco">La Jornada</a></div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-section">Economía</div>
+    <div class="news-headline">Mercado de pérdida de peso en India: 'baño de sangre' farmacéutico</div>
+    <div class="news-summary">Expiró patente de Ozempic (semaglutida). Consumidores esperan genéricos baratos. Fuente: FT</div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-section">Argentina</div>
+    <div class="news-headline">Jubilaciones ANSES: haber mínimo en $380.319 (+2,9%)</div>
+    <div class="news-summary">Ajuste por IPC de febrero. Tecnología argentina en misión Artemis II. <a href="https://www.infobae.com/economia/2026/04/14/anses-quienes-cobran-hoy-martes-14-de-abril-de-2026/">Infobae</a></div>
+  </div>
+
+  <div class="news-item">
+    <div class="news-section">España</div>
+    <div class="news-headline">Precio luz hoy: media 0,0914 €/kWh</div>
+    <div class="news-summary">Hora más barata 17-18h (0,039€). Más cara 21-22h (0,152€). <a href="https://tarifaluzhora.es/">tarifaluzhora.es</a></div>
+  </div>
+</div>
+
+<!-- CLIMA -->
+<div class="card">
+  <h2><span class="section-icon" style="background:#007aff">C</span> Clima Barcelona</h2>
+  <div class="weather-grid">
+    <div class="weather-stat">
+      <div class="value">22°</div>
+      <div class="label">Máxima</div>
+    </div>
+    <div class="weather-stat">
+      <div class="value">12°</div>
+      <div class="label">Mínima</div>
+    </div>
+    <div class="weather-stat">
+      <div class="value">&lt;5%</div>
+      <div class="label">Lluvia</div>
+    </div>
+    <div class="weather-stat">
+      <div class="value">18-32</div>
+      <div class="label">Viento km/h</div>
+    </div>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:12px;">Cielo nublado con posibles claros por la tarde. Día agradable pero fresco — llevar chaqueta ligera. Fuente: AccuWeather / Meteored</p>
+</div>
+
+<!-- WHATSAPP -->
+<div class="card">
+  <h2><span class="section-icon" style="background:#25d366">W</span> WhatsApp</h2>
+  <div class="unavailable">
+    <p><strong>No disponible.</strong> WhatsApp no está conectado como fuente de datos. Para incluirlo en futuros briefings, se necesita configurar un conector.</p>
+  </div>
+</div>
+
+<!-- PENDIENTES -->
+<div class="card">
+  <h2><span class="section-icon" style="background:#af52de">P</span> Pendientes del día</h2>
+  <ul class="task-list">
+    <li><span class="task-num" style="background:var(--red)">1</span> <strong>URGENTE:</strong> Verificar corte de corriente en domicilio (alerta Verisure 07:30)</li>
+    <li><span class="task-num">2</span> Revisar análisis de mercado sobre Estrecho de Ormuz antes de la apertura del lunes</li>
+    <li><span class="task-num">3</span> Decidir inscripción a masterclass online — martes 21/04 a las 10h (San Juan Asesores)</li>
+    <li><span class="task-num">4</span> Planificar semana: conectar calendarios para mejorar futuros briefings</li>
+    <li><span class="task-num">5</span> Preparar semana de Sant Jordi (23/04)</li>
+  </ul>
+</div>
+
+<!-- FUENTES NO DISPONIBLES -->
+<div class="card" style="background:#fafafa;">
+  <h2 style="font-size:14px;color:var(--muted);">Fuentes no disponibles</h2>
+  <p style="font-size:13px;color:var(--muted);">
+    Outlook Mail &middot; Zoho Mail &middot; Google Calendar &middot; Outlook Calendar &middot; Zoho Calendar &middot; WhatsApp — no conectados. Parte del informe puede estar incompleto.
+  </p>
+</div>
+
+<footer>
+  Briefing generado automáticamente &middot; 19 de abril de 2026 &middot; Fuentes: Gmail, FT, CNN, La Jornada, El Universal, Infobae, AccuWeather, Meteored, tarifaluzhora.es
+</footer>
+
+</div>
+</body>
+</html>

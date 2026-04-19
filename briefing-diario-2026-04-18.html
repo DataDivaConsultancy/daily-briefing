@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing Diario — 18 abril 2026</title>
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--accent:#1a1a2e;--accent2:#16213e;--blue:#2563eb;--red:#dc2626;--amber:#d97706;--green:#059669;--gray:#6b7280;--border:#e5e7eb;--shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.04)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;background:var(--bg);color:#1f2937;line-height:1.6;padding:0}
+.container{max-width:960px;margin:0 auto;padding:24px 16px}
+header{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:32px 24px;border-radius:16px;margin-bottom:24px}
+header h1{font-size:1.75rem;font-weight:700;margin-bottom:4px}
+header .meta{font-size:.875rem;opacity:.8}
+.card{background:var(--card);border-radius:12px;padding:20px 24px;margin-bottom:16px;box-shadow:var(--shadow);border:1px solid var(--border)}
+.card h2{font-size:1.125rem;font-weight:700;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card h2 .icon{font-size:1.25rem}
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.025em}
+.badge-red{background:#fef2f2;color:var(--red)}
+.badge-amber{background:#fffbeb;color:var(--amber)}
+.badge-green{background:#ecfdf5;color:var(--green)}
+.badge-blue{background:#eff6ff;color:var(--blue)}
+.badge-gray{background:#f3f4f6;color:var(--gray)}
+.email-item{border-left:3px solid var(--blue);padding:12px 16px;margin-bottom:12px;background:#fafbfc;border-radius:0 8px 8px 0}
+.email-item.urgent{border-left-color:var(--red)}
+.email-item h3{font-size:.95rem;font-weight:600;margin-bottom:4px}
+.email-item .sender{font-size:.8rem;color:var(--gray);margin-bottom:4px}
+.email-item .summary{font-size:.875rem;margin-bottom:8px}
+.email-item .action{font-size:.825rem;color:var(--blue);font-weight:500}
+.email-item .reply-box{background:#f0f7ff;border:1px solid #dbeafe;border-radius:6px;padding:10px 12px;margin-top:8px;font-size:.825rem;font-style:italic;color:#374151}
+.news-item{padding:10px 0;border-bottom:1px solid var(--border)}
+.news-item:last-child{border-bottom:none}
+.news-item h3{font-size:.9rem;font-weight:600;margin-bottom:2px}
+.news-item .src{font-size:.75rem;color:var(--gray)}
+.news-item p{font-size:.85rem;color:#4b5563}
+.weather-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;text-align:center}
+.weather-stat{background:#f0f7ff;border-radius:10px;padding:16px 12px}
+.weather-stat .val{font-size:1.5rem;font-weight:700;color:var(--accent)}
+.weather-stat .label{font-size:.75rem;color:var(--gray);margin-top:2px}
+.task-list{list-style:none;counter-reset:tasks}
+.task-list li{padding:8px 0;border-bottom:1px solid var(--border);font-size:.9rem;display:flex;align-items:flex-start;gap:8px}
+.task-list li:last-child{border-bottom:none}
+.task-list .num{background:var(--accent);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:2px}
+.section-tag{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--gray);margin-bottom:8px}
+.agenda-empty{text-align:center;padding:24px;color:var(--gray);font-size:.9rem}
+.sources{font-size:.75rem;color:var(--gray)}
+.sources a{color:var(--blue);text-decoration:none}
+.sources a:hover{text-decoration:underline}
+.unavailable{background:#fef3c7;border:1px solid #fde68a;border-radius:8px;padding:10px 14px;font-size:.825rem;color:#92400e;margin-top:12px}
+@media(max-width:640px){
+  .container{padding:12px 8px}
+  header{padding:20px 16px;border-radius:12px}
+  header h1{font-size:1.35rem}
+  .card{padding:16px}
+  .weather-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Briefing Diario</h1>
+  <div class="meta">Sábado, 18 de abril de 2026 &middot; Barcelona &middot; Generado ~16:00 CEST</div>
+</header>
+
+<!-- RESUMEN EJECUTIVO -->
+<div class="card">
+  <h2><span class="icon">&#9889;</span> Resumen ejecutivo</h2>
+  <ul class="task-list">
+    <li><span class="num" style="background:var(--red)">!</span><strong>Pago pendiente billete Marcos (Bestours)</strong> — solicitado link de pago el 14/4, sin respuesta. Seguimiento urgente.</li>
+    <li><span class="num" style="background:var(--amber)">!</span><strong>Tazas Puga Textil</strong> — sin respuesta tras 9 días. Reenviar o buscar alternativa.</li>
+    <li><span class="num">&#10003;</span>Sábado sin reuniones. Calendario Outlook vacío.</li>
+    <li><span class="num">i</span>Cumbre internacional en Barcelona — posibles afectaciones de tráfico.</li>
+    <li><span class="num">$</span>Wall Street en máximos. Inflación Argentina 3,4%.</li>
+    <li><span class="num">&#9788;</span>Barcelona: soleado, 16-21°C, sin lluvia.</li>
+  </ul>
+</div>
+
+<!-- CORREOS PRIORITARIOS -->
+<div class="card">
+  <h2><span class="icon">&#9993;</span> Correos prioritarios</h2>
+
+  <div class="section-tag">Muy urgentes</div>
+  <div class="email-item urgent">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+      <h3>Pago pendiente billete avión — Bestours</h3>
+      <span class="badge badge-red">ALTA</span>
+    </div>
+    <div class="sender">De: Rafael Herrera (Bestours) &middot; Gmail &middot; 14/04 16:37</div>
+    <div class="summary">Bestours reclama pago no recibido del billete de Juan Marcos Broggi a Canadá (1.299 + 80 EUR). Horacio respondió pidiendo link de pago con tarjeta el mismo día, pero no hay respuesta tras 4 días.</div>
+    <div class="action">Acción: Reenviar solicitud hoy. Si no responden, llamar lunes al +34 93 496 74 19.</div>
+    <div class="reply-box">"Hola Rafael, te escribo de nuevo para solicitar el link de pago con tarjeta que pedí el martes 14. Quedo a la espera para resolver el pago a la mayor brevedad. Gracias, Horacio"</div>
+  </div>
+
+  <div class="section-tag" style="margin-top:16px">Importantes</div>
+  <div class="email-item">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px">
+      <h3>Tazas personalizadas — Puga Textil</h3>
+      <span class="badge badge-amber">MEDIA</span>
+    </div>
+    <div class="sender">Enviado a: info@pugatextil.es &middot; Gmail &middot; 09/04 10:17</div>
+    <div class="summary">Solicitud de presupuesto para 200 tazas con impresión láser/permanente. Sin respuesta tras 9 días.</div>
+    <div class="action">Acción: Reenviar o buscar proveedor alternativo.</div>
+    <div class="reply-box">"Hola Pablo, te reenvío mi consulta del 9 de abril sobre las 200 tazas. ¿Podrías confirmarme disponibilidad o recomendar a alguien? Gracias, Horacio"</div>
+  </div>
+
+  <div class="section-tag" style="margin-top:16px">Outlook (horaciobroggi@hotmail.com)</div>
+  <p style="font-size:.85rem;color:var(--gray)">1.282 correos no leídos — predominantemente newsletters y promociones. No se detectaron correos de negocio urgentes.</p>
+
+  <div class="unavailable">
+    <strong>Fuentes no disponibles:</strong> Zoho Mail (sin conector).
+  </div>
+</div>
+
+<!-- AGENDA -->
+<div class="card">
+  <h2><span class="icon">&#128197;</span> Agenda del día</h2>
+  <div class="agenda-empty">
+    <div style="font-size:2rem;margin-bottom:8px">&#128516;</div>
+    <strong>Sin eventos programados</strong><br>
+    Hoy es sábado. Calendario Outlook vacío.
+  </div>
+  <div class="unavailable">
+    <strong>Calendarios no conectados:</strong> Google Calendar (recomendado autorizar), Zoho Calendar (sin conector).
+  </div>
+  <div style="margin-top:16px">
+    <div class="section-tag">Agenda ideal sugerida</div>
+    <div style="font-size:.85rem">
+      <strong>09:00-09:30</strong> — Revisar briefing y enviar correo a Bestours<br>
+      <strong>09:30-10:00</strong> — Seguimiento tazas Puga Textil<br>
+      <strong>Resto del día</strong> — Libre. Día soleado perfecto.
+    </div>
+  </div>
+</div>
+
+<!-- NOTICIAS -->
+<div class="card">
+  <h2><span class="icon">&#128240;</span> Noticias principales</h2>
+
+  <div class="section-tag">Espa&ntilde;a</div>
+  <div class="news-item">
+    <h3>Cumbre Global Progressive Mobilisation en Barcelona</h3>
+    <p>Sheinbaum, Lula y Sánchez participan en "En Defensa de la Democracia". España y Brasil amplían alianza para pymes y minerales críticos.</p>
+    <div class="src">El Español, Milenio</div>
+  </div>
+  <div class="news-item">
+    <h3>España busca liderar el crecimiento europeo por tercer a&ntilde;o</h3>
+    <p>El país pretende superar previsiones mientras el PIB europeo se estanca en 0,8%. Carlos Cuerpo anuncia Consejo Global para Economía del Bien Común.</p>
+    <div class="src">elDiario.es, El Español</div>
+  </div>
+
+  <div class="section-tag" style="margin-top:12px">Argentina</div>
+  <div class="news-item">
+    <h3>Inflación marzo 3,4% — la más alta de 2026</h3>
+    <p>Lleva 10 meses sin bajar. Financial Times advierte estancamiento del plan Milei. El presidente pide "paciencia".</p>
+    <div class="src">Emol, Perfil</div>
+  </div>
+  <div class="news-item">
+    <h3>Deuda con FMI se dispara 36% bajo Milei</h3>
+    <p>Argentina adeuda 57.250 millones USD. Gobierno mantiene superávit financiero en marzo.</p>
+    <div class="src">Infobae, Diario Socialista</div>
+  </div>
+
+  <div class="section-tag" style="margin-top:12px">Internacional</div>
+  <div class="news-item">
+    <h3>Ucrania lanza 90+ drones contra residencia de Putin</h3>
+    <p>Trump se declara "sorprendido". Escalada significativa en el conflicto ucraniano.</p>
+    <div class="src">Medios internacionales</div>
+  </div>
+  <div class="news-item">
+    <h3>Reapertura del estrecho de Ormuz</h3>
+    <p>Acuerdo de paz EU-Irán en discusión. Wall Street reacciona positivamente.</p>
+    <div class="src">La Jornada, El Financiero</div>
+  </div>
+
+  <div class="section-tag" style="margin-top:12px">Economía y negocios</div>
+  <div class="news-item">
+    <h3>Wall Street en máximos históricos</h3>
+    <p>Dow Jones 48.498, Nasdaq 24.082. Impulsado por reapertura de Ormuz y perspectivas de acuerdo EU-Irán.</p>
+    <div class="src">La Jornada, El Financiero</div>
+  </div>
+  <div class="news-item">
+    <h3>FMI reduce previsión de crecimiento mundial a 3,1%</h3>
+    <p>Proyecta 3,2% para 2027. Inflación global en 4,4%, petróleo promedia US$82.</p>
+    <div class="src">Banco Mundial / FMI</div>
+  </div>
+</div>
+
+<!-- CLIMA -->
+<div class="card">
+  <h2><span class="icon">&#9728;&#65039;</span> Clima Barcelona</h2>
+  <div class="weather-grid">
+    <div class="weather-stat">
+      <div class="val">16°</div>
+      <div class="label">Mínima</div>
+    </div>
+    <div class="weather-stat">
+      <div class="val">21°</div>
+      <div class="label">Máxima</div>
+    </div>
+    <div class="weather-stat">
+      <div class="val">0%</div>
+      <div class="label">Lluvia</div>
+    </div>
+    <div class="weather-stat">
+      <div class="val">13h</div>
+      <div class="label">Horas de sol</div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:12px;font-size:.85rem;color:var(--gray)">Soleado &middot; Viento 5-15 km/h &middot; Amanecer 07:07 &middot; Puesta 20:35</p>
+  <p style="text-align:center;font-size:.85rem;margin-top:4px">Día excelente para actividades al aire libre.</p>
+</div>
+
+<!-- WHATSAPP -->
+<div class="card">
+  <h2><span class="icon">&#128172;</span> WhatsApp</h2>
+  <div class="unavailable">WhatsApp no está conectado como fuente de datos. No es posible revisar mensajes pendientes.</div>
+</div>
+
+<!-- PENDIENTES -->
+<div class="card">
+  <h2><span class="icon">&#9989;</span> Pendientes recomendados</h2>
+  <ul class="task-list">
+    <li><span class="num" style="background:var(--red)">1</span><span><span class="badge badge-red">URGENTE</span> Reenviar solicitud de link de pago a Rafael Herrera (Bestours)</span></li>
+    <li><span class="num" style="background:var(--amber)">2</span><span><span class="badge badge-amber">IMPORTANTE</span> Seguimiento con Puga Textil sobre presupuesto de 200 tazas</span></li>
+    <li><span class="num" style="background:var(--blue)">3</span><span><span class="badge badge-blue">RECOMENDADO</span> Autorizar conexión de Google Calendar</span></li>
+    <li><span class="num" style="background:var(--gray)">4</span><span><span class="badge badge-gray">INFO</span> Posibles cortes de tráfico en Barcelona por cumbre internacional</span></li>
+  </ul>
+</div>
+
+<!-- FUENTES -->
+<div class="card sources">
+  <h2><span class="icon">&#128279;</span> Fuentes</h2>
+  <a href="https://www.elespanol.com/espana/politica/20260418/ultima-hora-politica-directo-comienza-segunda-jornada-foro-global-progressive-mobilisation-cumbre-espana-brasil-defensa-democracia/1003744212307_10.html" target="_blank">El Español — Cumbre Barcelona</a> &middot;
+  <a href="https://www.eldiario.es/economia/espana-busca-batir-previsiones-crecimiento-2026-liderar-grandes-economias-tercer-ano_1_12879125.html" target="_blank">elDiario.es — Crecimiento España</a> &middot;
+  <a href="https://www.emol.com/noticias/Economia/2026/04/14/1197216/inflacion-argentina-milei.html" target="_blank">Emol — Inflación Argentina</a> &middot;
+  <a href="https://www.perfil.com/noticias/economia/financial-times-advirtio-inflacion-argentina-cuestiono-plan-milei-sostener-baja-a40.phtml" target="_blank">Perfil — FT sobre Milei</a> &middot;
+  <a href="https://www.infobae.com/economia/2026/04/16/el-gobierno-volvio-a-alcanzar-un-superavit-financiero-en-marzo/" target="_blank">Infobae — Superávit Argentina</a> &middo
