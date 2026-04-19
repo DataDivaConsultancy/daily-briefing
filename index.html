@@ -1,283 +1,313 @@
-<!DOCTYPE html>
+<\!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Briefing Diario — 19 de abril de 2026</title>
+<title>Briefing Diario</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
 <style>
-  :root {
-    --bg: #f5f5f7;
-    --card: #ffffff;
-    --text: #1d1d1f;
-    --muted: #6e6e73;
-    --accent: #0071e3;
-    --red: #ff3b30;
-    --orange: #ff9500;
-    --green: #34c759;
-    --blue: #007aff;
-    --border: #e5e5ea;
-    --shadow: 0 1px 3px rgba(0,0,0,.08);
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
-  .container { max-width:900px; margin:0 auto; padding:24px 16px; }
-  header { text-align:center; padding:32px 0 24px; }
-  header h1 { font-size:28px; font-weight:700; letter-spacing:-.5px; }
-  header p { color:var(--muted); font-size:14px; margin-top:4px; }
-  .card { background:var(--card); border-radius:12px; box-shadow:var(--shadow); padding:20px 24px; margin-bottom:16px; }
-  .card h2 { font-size:18px; font-weight:600; margin-bottom:12px; display:flex; align-items:center; gap:8px; }
-  .section-icon { width:24px; height:24px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:14px; color:#fff; flex-shrink:0; }
-  .alert-banner { background:linear-gradient(135deg,#ff3b30,#ff6961); color:#fff; border-radius:12px; padding:16px 24px; margin-bottom:16px; }
-  .alert-banner h3 { font-size:16px; font-weight:700; margin-bottom:4px; }
-  .alert-banner p { font-size:14px; opacity:.95; }
-  .priority-high { border-left:4px solid var(--red); }
-  .priority-medium { border-left:4px solid var(--orange); }
-  .priority-low { border-left:4px solid var(--green); }
-  .badge { display:inline-block; font-size:11px; font-weight:600; padding:2px 8px; border-radius:10px; text-transform:uppercase; }
-  .badge-alta { background:#ffebee; color:#c62828; }
-  .badge-media { background:#fff3e0; color:#e65100; }
-  .badge-baja { background:#e8f5e9; color:#2e7d32; }
-  .email-item { padding:12px 0; border-bottom:1px solid var(--border); }
-  .email-item:last-child { border-bottom:none; }
-  .email-sender { font-weight:600; font-size:14px; }
-  .email-subject { font-size:14px; color:var(--text); margin:2px 0; }
-  .email-meta { font-size:12px; color:var(--muted); }
-  .email-summary { font-size:13px; color:#444; margin-top:4px; }
-  .email-action { font-size:12px; color:var(--accent); font-weight:500; margin-top:4px; }
-  .news-item { padding:10px 0; border-bottom:1px solid var(--border); }
-  .news-item:last-child { border-bottom:none; }
-  .news-section { font-size:11px; font-weight:600; text-transform:uppercase; color:var(--accent); margin-bottom:2px; }
-  .news-headline { font-weight:600; font-size:14px; }
-  .news-summary { font-size:13px; color:#444; margin-top:2px; }
-  .weather-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; text-align:center; }
-  .weather-stat { padding:12px; background:var(--bg); border-radius:8px; }
-  .weather-stat .value { font-size:24px; font-weight:700; }
-  .weather-stat .label { font-size:12px; color:var(--muted); }
-  .task-list { list-style:none; }
-  .task-list li { padding:8px 0; border-bottom:1px solid var(--border); font-size:14px; display:flex; align-items:flex-start; gap:8px; }
-  .task-list li:last-child { border-bottom:none; }
-  .task-num { background:var(--accent); color:#fff; width:22px; height:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; flex-shrink:0; }
-  .summary-list { list-style:none; }
-  .summary-list li { padding:6px 0; font-size:14px; border-bottom:1px solid var(--border); }
-  .summary-list li:last-child { border-bottom:none; }
-  .unavailable { background:#fafafa; border-radius:8px; padding:12px 16px; margin-top:8px; }
-  .unavailable p { font-size:13px; color:var(--muted); }
-  .agenda-note { background:var(--bg); border-radius:8px; padding:12px 16px; font-size:13px; color:var(--muted); }
-  footer { text-align:center; padding:24px 0; color:var(--muted); font-size:12px; }
-  a { color:var(--accent); text-decoration:none; }
-  a:hover { text-decoration:underline; }
-  @media(max-width:600px){
-    .container{padding:12px 8px;}
-    .card{padding:16px;}
-    header h1{font-size:22px;}
-    .weather-grid{grid-template-columns:repeat(2,1fr);}
-  }
+:root{--bg:#f5f5f7;--card:#fff;--text:#1d1d1f;--muted:#6e6e73;--accent:#0071e3;--red:#ff3b30;--orange:#ff9500;--green:#34c759;--blue:#007aff;--border:#e5e5ea;--shadow:0 1px 3px rgba(0,0,0,.08)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.container{max-width:900px;margin:0 auto;padding:24px 16px}
+header{text-align:center;padding:32px 0 24px}
+header h1{font-size:28px;font-weight:700;letter-spacing:-.5px}
+header p{color:var(--muted);font-size:14px;margin-top:4px}
+.card{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:20px 24px;margin-bottom:16px}
+.card h2{font-size:18px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.section-icon{width:24px;height:24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:14px;color:#fff;flex-shrink:0}
+.alert-banner{background:linear-gradient(135deg,#ff3b30,#ff6961);color:#fff;border-radius:12px;padding:16px 24px;margin-bottom:16px}
+.alert-banner h3{font-size:16px;font-weight:700;margin-bottom:4px}
+.alert-banner p{font-size:14px;opacity:.95}
+.priority-high{border-left:4px solid var(--red)}
+.priority-medium{border-left:4px solid var(--orange)}
+.priority-low{border-left:4px solid var(--green)}
+.badge{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;text-transform:uppercase}
+.badge-alta{background:#ffebee;color:#c62828}
+.badge-media{background:#fff3e0;color:#e65100}
+.badge-baja{background:#e8f5e9;color:#2e7d32}
+.email-item{padding:12px 0;border-bottom:1px solid var(--border)}
+.email-item:last-child{border-bottom:none}
+.email-sender{font-weight:600;font-size:14px}
+.email-subject{font-size:14px;color:var(--text);margin:2px 0}
+.email-meta{font-size:12px;color:var(--muted)}
+.email-summary{font-size:13px;color:#444;margin-top:4px}
+.email-action{font-size:12px;color:var(--accent);font-weight:500;margin-top:4px}
+.news-item{padding:10px 0;border-bottom:1px solid var(--border)}
+.news-item:last-child{border-bottom:none}
+.news-section{font-size:11px;font-weight:600;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.news-headline{font-weight:600;font-size:14px}
+.news-summary{font-size:13px;color:#444;margin-top:2px}
+.weather-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;text-align:center}
+.weather-stat{padding:12px;background:var(--bg);border-radius:8px}
+.weather-stat .value{font-size:24px;font-weight:700}
+.weather-stat .label{font-size:12px;color:var(--muted)}
+.task-list{list-style:none}
+.task-list li{padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;display:flex;align-items:flex-start;gap:8px}
+.task-list li:last-child{border-bottom:none}
+.task-num{background:var(--accent);color:#fff;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0}
+.summary-list{list-style:none}
+.summary-list li{padding:6px 0;font-size:14px;border-bottom:1px solid var(--border)}
+.summary-list li:last-child{border-bottom:none}
+.unavailable{background:#fafafa;border-radius:8px;padding:12px 16px;margin-top:8px}
+.unavailable p{font-size:13px;color:var(--muted)}
+.agenda-note{background:var(--bg);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--muted)}
+footer{text-align:center;padding:24px 0;color:var(--muted);font-size:12px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+@media(max-width:600px){.container{padding:12px 8px}.card{padding:16px}header h1{font-size:22px}.weather-grid{grid-template-columns:repeat(2,1fr)}}
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1d1d1f 0%,#2c2c2e 100%)}
+.login-box{background:#fff;border-radius:16px;padding:48px 40px;max-width:400px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.login-box h1{font-size:24px;font-weight:700;margin-bottom:8px;color:#1d1d1f}
+.login-box p{font-size:14px;color:#6e6e73;margin-bottom:24px}
+.login-box input[type="password"]{width:100%;padding:14px 16px;border:2px solid #e5e5ea;border-radius:10px;font-size:16px;outline:none;transition:border-color .2s}
+.login-box input[type="password"]:focus{border-color:#0071e3}
+.login-box button{width:100%;padding:14px;background:#0071e3;color:#fff;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;margin-top:16px;transition:background .2s}
+.login-box button:hover{background:#0062cc}
+.login-error{color:#ff3b30;font-size:13px;margin-top:12px;display:none}
+.login-logo{width:64px;height:64px;background:linear-gradient(135deg,#0071e3,#00c7be);border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;color:#fff;font-weight:700}
 </style>
 </head>
 <body>
-<div class="container">
-
-<header>
-  <h1>Briefing Diario</h1>
-  <p>Domingo, 19 de abril de 2026 &middot; Generado a las 10:13 CEST</p>
-</header>
-
-<!-- ALERTA -->
-<div class="alert-banner">
-  <h3>ALERTA: Corte de corriente detectado</h3>
-  <p>Verisure ha detectado un corte de corriente en tu sistema de alarma (07:30h). Verifica el cuadro eléctrico y restablece la corriente lo antes posible.</p>
+<div id="login-screen" class="login-screen">
+<div class="login-box">
+<div class="login-logo">HB</div>
+<h1>Briefing Diario</h1>
+<p>Introduce la contraseña para acceder</p>
+<input type="password" id="pwd" placeholder="Contraseña" onkeydown="if(event.key==='Enter')decrypt()">
+<button onclick="decrypt()">Acceder</button>
+<div class="login-error" id="error-msg">Contraseña incorrecta</div>
 </div>
-
-<!-- RESUMEN EJECUTIVO -->
-<div class="card">
-  <h2><span class="section-icon" style="background:var(--accent)">R</span> Resumen ejecutivo</h2>
-  <ul class="summary-list">
-    <li><strong>Alerta Verisure:</strong> Corte de corriente detectado en el sistema de alarma. Acción inmediata requerida.</li>
-    <li><strong>Mercados:</strong> Irán re-cerró el Estrecho de Ormuz en &lt;24h. Volatilidad esperada el lunes. Trump advierte a Teherán.</li>
-    <li><strong>Domingo:</strong> Sin reuniones detectadas (calendarios no conectados).</li>
-    <li><strong>FMI:</strong> Previsión de crecimiento mundial reducida al 3,1% para 2026.</li>
-    <li><strong>Argentina:</strong> Ajuste jubilaciones +2,9%. Tecnología argentina en Artemis II.</li>
-    <li><strong>Venezuela:</strong> EE.UU. levantó sanciones al Banco Central.</li>
-    <li><strong>Sant Jordi (23/04):</strong> Semana cultural en Barcelona a la vista.</li>
-    <li><strong>Gmail:</strong> Sin correos personales/negocio urgentes. Solo newsletters.</li>
-    <li><strong>Outlook / Zoho / WhatsApp:</strong> No conectados.</li>
-  </ul>
 </div>
-
-<!-- CORREOS -->
-<div class="card">
-  <h2><span class="section-icon" style="background:#ff3b30">@</span> Correos prioritarios</h2>
-
-  <div class="email-item priority-high" style="padding-left:12px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <span class="email-sender">Verisure</span>
-      <span class="badge badge-alta">Alta</span>
-    </div>
-    <div class="email-subject">Corte de corriente detectado</div>
-    <div class="email-meta">Gmail &middot; verisure@verisure.es &middot; 19/04 07:30 UTC</div>
-    <div class="email-summary">El sistema de alarma ha detectado una interrupción eléctrica. Se requiere restablecer la corriente lo antes posible.</div>
-    <div class="email-action">Acción: Verificar cuadro eléctrico inmediatamente</div>
-  </div>
-
-  <div class="email-item priority-medium" style="padding-left:12px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <span class="email-sender">San Juan Asesores</span>
-      <span class="badge badge-media">Media</span>
-    </div>
-    <div class="email-subject">Últimas plazas — Masterclass gratuita</div>
-    <div class="email-meta">Gmail &middot; juanjose.hernandez@sanjuanasesores.com &middot; 19/04 05:02 UTC</div>
-    <div class="email-summary">Masterclass gratuita online el martes 21/04 a las 10h. Quedan pocos huecos.</div>
-    <div class="email-action">Acción: Decidir si asistir y reservar hoy</div>
-  </div>
-
-  <div class="email-item priority-medium" style="padding-left:12px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <span class="email-sender">Financial Times</span>
-      <span class="badge badge-media">Media</span>
-    </div>
-    <div class="email-subject">World News: Indian weight-loss market becomes 'bloodbath'...</div>
-    <div class="email-meta">Gmail (hbroggi@eada.net) &middot; FT@news-alerts.ft.com &middot; 19/04 04:00 UTC</div>
-    <div class="email-summary">Titulares: Estrecho de Ormuz bajo control iraní. Mercado de Ozempic genérico en India. UK: tensiones laborismo.</div>
-    <div class="email-action">Acción: Leer más tarde</div>
-  </div>
-
-  <div class="email-item priority-medium" style="padding-left:12px;">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <span class="email-sender">Options Trading Report</span>
-      <span class="badge badge-media">Media</span>
-    </div>
-    <div class="email-subject">The Strait Closed Again. Your Portfolio Has 48 Hours.</div>
-    <div class="email-meta">Gmail &middot; 19/04 00:33 UTC</div>
-    <div class="email-summary">Irán re-cerró Ormuz en &lt;24h. Análisis de impacto en portafolios de inversión.</div>
-    <div class="email-action">Acción: Leer si tienes exposición a energía</div>
-  </div>
-
-  <p style="font-size:13px;color:var(--muted);margin-top:12px;">+ 26 correos adicionales ignorados (newsletters, promociones y spam comercial)</p>
-</div>
-
-<!-- AGENDA -->
-<div class="card">
-  <h2><span class="section-icon" style="background:#34c759">A</span> Agenda consolidada</h2>
-  <div class="agenda-note">
-    <strong>Domingo 19 de abril</strong> — No se detectaron eventos programados.<br><br>
-    <strong>Nota:</strong> Google Calendar, Outlook Calendar y Zoho Calendar no están conectados. Es posible que existan eventos no visibles para este briefing.<br><br>
-    <strong>Propuesta de agenda ideal:</strong><br>
-    &bull; Mañana: Verificar alarma Verisure y estado eléctrico<br>
-    &bull; Media mañana: Revisar análisis FT y mercados (Ormuz)<br>
-    &bull; Tarde: Descanso / planificación de la semana<br>
-    &bull; Noche: Decidir asistencia a masterclass martes
-  </div>
-</div>
-
-<!-- NOTICIAS -->
-<div class="card">
-  <h2><span class="section-icon" style="background:#ff9500">N</span> Noticias principales</h2>
-
-  <div class="news-item">
-    <div class="news-section">Internacional</div>
-    <div class="news-headline">Irán re-cierra el Estrecho de Ormuz y reclama 'control estricto'</div>
-    <div class="news-summary">Cerrado nuevamente en &lt;24h tras abrirlo. Trump advierte a Teherán. Impacto en precios del petróleo y mercados. <a href="http://cnnespanol.cnn.com/2026/04/15/mundo/live-news/guerra-ee-uu-e-israel-iran-ataques-en-vivo-1-trax">CNN</a></div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-section">Internacional</div>
-    <div class="news-headline">Alto el fuego de 10 días entre Líbano e Israel</div>
-    <div class="news-summary">La ONU acogió con satisfacción el anuncio. Reducción parcial de tensiones en la región.</div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-section">Internacional</div>
-    <div class="news-headline">EE.UU. elimina sanciones al Banco Central de Venezuela</div>
-    <div class="news-summary">El Departamento del Tesoro confirmó la medida. <a href="https://www.eluniversal.com.co/mundo/2026/04/14/estados-unidos-elimina-sanciones-al-banco-central-de-venezuela/">El Universal</a></div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-section">Economía</div>
-    <div class="news-headline">FMI reduce previsión de crecimiento mundial a 3,1%</div>
-    <div class="news-summary">Latam crecerá solo 2,1%. Desaceleración frente al 3,4% del bienio previo.</div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-section">Economía</div>
-    <div class="news-headline">Wall Street cerca de máximos, pero volatilidad por Ormuz</div>
-    <div class="news-summary">S&P 500 subió tras reapertura temporal, pero el re-cierre genera incertidumbre para el lunes. <a href="https://www.jornada.com.mx/2026/04/18/economia/013n1eco">La Jornada</a></div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-section">Economía</div>
-    <div class="news-headline">Mercado de pérdida de peso en India: 'baño de sangre' farmacéutico</div>
-    <div class="news-summary">Expiró patente de Ozempic (semaglutida). Consumidores esperan genéricos baratos. Fuente: FT</div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-section">Argentina</div>
-    <div class="news-headline">Jubilaciones ANSES: haber mínimo en $380.319 (+2,9%)</div>
-    <div class="news-summary">Ajuste por IPC de febrero. Tecnología argentina en misión Artemis II. <a href="https://www.infobae.com/economia/2026/04/14/anses-quienes-cobran-hoy-martes-14-de-abril-de-2026/">Infobae</a></div>
-  </div>
-
-  <div class="news-item">
-    <div class="news-section">España</div>
-    <div class="news-headline">Precio luz hoy: media 0,0914 €/kWh</div>
-    <div class="news-summary">Hora más barata 17-18h (0,039€). Más cara 21-22h (0,152€). <a href="https://tarifaluzhora.es/">tarifaluzhora.es</a></div>
-  </div>
-</div>
-
-<!-- CLIMA -->
-<div class="card">
-  <h2><span class="section-icon" style="background:#007aff">C</span> Clima Barcelona</h2>
-  <div class="weather-grid">
-    <div class="weather-stat">
-      <div class="value">22°</div>
-      <div class="label">Máxima</div>
-    </div>
-    <div class="weather-stat">
-      <div class="value">12°</div>
-      <div class="label">Mínima</div>
-    </div>
-    <div class="weather-stat">
-      <div class="value">&lt;5%</div>
-      <div class="label">Lluvia</div>
-    </div>
-    <div class="weather-stat">
-      <div class="value">18-32</div>
-      <div class="label">Viento km/h</div>
-    </div>
-  </div>
-  <p style="font-size:13px;color:var(--muted);margin-top:12px;">Cielo nublado con posibles claros por la tarde. Día agradable pero fresco — llevar chaqueta ligera. Fuente: AccuWeather / Meteored</p>
-</div>
-
-<!-- WHATSAPP -->
-<div class="card">
-  <h2><span class="section-icon" style="background:#25d366">W</span> WhatsApp</h2>
-  <div class="unavailable">
-    <p><strong>No disponible.</strong> WhatsApp no está conectado como fuente de datos. Para incluirlo en futuros briefings, se necesita configurar un conector.</p>
-  </div>
-</div>
-
-<!-- PENDIENTES -->
-<div class="card">
-  <h2><span class="section-icon" style="background:#af52de">P</span> Pendientes del día</h2>
-  <ul class="task-list">
-    <li><span class="task-num" style="background:var(--red)">1</span> <strong>URGENTE:</strong> Verificar corte de corriente en domicilio (alerta Verisure 07:30)</li>
-    <li><span class="task-num">2</span> Revisar análisis de mercado sobre Estrecho de Ormuz antes de la apertura del lunes</li>
-    <li><span class="task-num">3</span> Decidir inscripción a masterclass online — martes 21/04 a las 10h (San Juan Asesores)</li>
-    <li><span class="task-num">4</span> Planificar semana: conectar calendarios para mejorar futuros briefings</li>
-    <li><span class="task-num">5</span> Preparar semana de Sant Jordi (23/04)</li>
-  </ul>
-</div>
-
-<!-- FUENTES NO DISPONIBLES -->
-<div class="card" style="background:#fafafa;">
-  <h2 style="font-size:14px;color:var(--muted);">Fuentes no disponibles</h2>
-  <p style="font-size:13px;color:var(--muted);">
-    Outlook Mail &middot; Zoho Mail &middot; Google Calendar &middot; Outlook Calendar &middot; Zoho Calendar &middot; WhatsApp — no conectados. Parte del informe puede estar incompleto.
-  </p>
-</div>
-
-<footer>
-  Briefing generado automáticamente &middot; 19 de abril de 2026 &middot; Fuentes: Gmail, FT, CNN, La Jornada, El Universal, Infobae, AccuWeather, Meteored, tarifaluzhora.es
-</footer>
-
-</div>
+<div id="content" style="display:none"></div>
+<script>
+var encData="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";
+function decrypt(){var p=document.getElementById("pwd").value;try{var b=CryptoJS.AES.decrypt(encData,p);var d=b.toString(CryptoJS.enc.Utf8);if(\!d||d.length<10)throw new Error("bad");document.getElementById("login-screen").style.display="none";document.getElementById("content").style.display="block";document.getElementById("content").innerHTML=d;document.title="Briefing Diario — 19 de abril de 2026";}catch(e){document.getElementById("error-msg").style.display="block";document.getElementById("pwd").value="";document.getElementById("pwd").focus();}}
+</script>
 </body>
 </html>
